@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="wilsonCostaStyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="containter">
+<div class="row">
+<div class="col-md-6 mx-auto">
+  <h1>Formulário de Contato</h1>
+    <form id="contactForm" novalidate>
+        <fieldset class="border p-4">
+            <legend class="w-auto">Informações Pessoais</legend>
+
+            <div class="form-group">
+                <label for="firstName">Nome</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Sobrenome</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensagem</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Língua Aplicada</label>
+                <select class="form-control" id="language" name="language" required>
+                    <option value="">Selecione...</option>
+                    <option value="ingles">Inglês</option>
+                    <option value="espanhol">Espanhol</option>
+                    <option value="frances">Francês</option>
+                    <option value="portugues">Português (pt-br)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prototype">Upload do Protótipo</label>
+                <input type="file" class="form-control-file" id="prototype" name="prototype" accept=".pdf,.doc,.docx,.jpeg,.png" required>
+            </div>
+
+            <div class="form-group">
+                <label for="languages">Linguagens Preferidas</label>
+                <select multiple class="form-control" id="languages" name="languages" required>
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="csharp">C#</option>
+                    <option value="ruby">Ruby</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Banco de Dados Recomendado</label>
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="database" id="mysql" value="mysql" required>
+                        <label class="form-check-label" for="mysql">MySQL</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="database" id="postgresql" value="postgresql" required>
+                        <label class="form-check-label" for="postgresql">PostgreSQL</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="database" id="mongodb" value="mongodb" required>
+                        <label class="form-check-label" for="mongodb">MongoDB</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="meetingShift">Turno de Preferência para Reuniões</label>
+                <select class="form-control" id="meetingShift" name="meetingShift" required>
+                    <option value="">Selecione...</option>
+                    <option value="manhã">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noite">Noite</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="meetingTime">Melhor Horário para Reuniões</label>
+                <input type="time" class="form-control" id="meetingTime" name="meetingTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deliveryDate">Previsão de Entrega</label>
+                <input type="date" class="form-control" id="deliveryDate" name="deliveryDate" required>
+            </div>
+
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </fieldset>
+    </form>
+
+  
+    <script>
+        $(document).ready(function(){
+            $('#phone').mask('(00) 00000-0000');
+            $('#email').on('blur', function() {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test($(this).val())) {
+                    alert('Por favor, insira um e-mail válido.');
+                    $(this).focus();
+                }
+            });
+            $('#contactForm').on('submit', function(event) {
+                if (!this.checkValidity()) {
+                    event.preventDefault();
+                    alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+                }
+            });
+        });
+    </script>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
